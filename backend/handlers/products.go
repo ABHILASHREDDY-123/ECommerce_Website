@@ -30,3 +30,31 @@ func GetReviews(c *gin.Context) {
 	}
 
 }
+
+func GetProducts(c *gin.Context){
+	var products []models.Product
+	database.DB.Find(&products)
+	c.JSON(200,gin.H{
+		"content":products,
+		"message":"Successfully got all products",
+	})
+}
+
+func GetProductDetails(c *gin.Context){
+	id := c.Param("id")
+	var reviews []models.Review
+	resp := database.DB.Where("product_id = ?",id).Find(&reviews)
+	if resp.Error != nil {
+		c.JSON(400, gin.H{
+			"error":"Server Error!",
+		})
+		c.Abort()
+		return 
+	} else {
+		c.JSON(200,gin.H{
+			"message":"Successful!!",
+			"content":reviews,
+		})
+	}
+
+}

@@ -66,8 +66,6 @@ func BuyProducts(c *gin.Context) {
              "message":"Successfully Placed Order",
 			})
 		}
-
 	}
-
-
 }
+

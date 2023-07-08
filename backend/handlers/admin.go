@@ -14,6 +14,7 @@ func AddProduct(c *gin.Context) {
 		c.JSON(200,gin.H{
 			"error":"Wrong JSON Format",
 		}) 
+		return 
 	}
 	product.Total_reviews=0;
 	product.TotalRating=0;
@@ -26,6 +27,7 @@ func AddProduct(c *gin.Context) {
 		c.JSON(200,gin.H{
         "message":"Successful Creation of Product",
 		})
+		return 
 	}	
 }
 

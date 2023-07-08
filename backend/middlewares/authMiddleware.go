@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
@@ -10,8 +11,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func isAuth(c *gin.Context) {
-    tokenString := c.GetHeader("Authorization")
+func IsAuth(c *gin.Context) {
+	tokenString := c.GetHeader("Authorization")
 	if tokenString == "" {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
 		c.Abort()
@@ -24,6 +25,7 @@ func isAuth(c *gin.Context) {
 
 	// Verify the token
 	if err != nil || !token.Valid {
+		fmt.Println("Token In valid")
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
 		c.Abort()
 		return
@@ -32,15 +34,23 @@ func isAuth(c *gin.Context) {
 	// Set the user information from the token in the Gin context
 	claims := token.Claims.(jwt.MapClaims)
 	email := claims["email"]
-	var user models.User 
-	result := database.DB.Where("email = ?",email).First(&user)
-    if(result != nil ){
+	AdminLoginEmail := os.Getenv("AdminLoginEmail")
+	if AdminLoginEmail == email {
+		c.Set("admin", 1)
+		c.Set("email", email)
+		c.Next()
+	} else {
+	var user models.User
+	result := database.DB.Where("email = ?", email).First(&user)
+	if result.Error != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
 		c.Abort()
 		return
 	}
-	c.Set("email",user.Name)
-	c.Set("name",user.Name)
-	c.Set("id",user.ID)
+	fmt.Println("Authorized")
+	c.Set("email", user.Email)
+	c.Set("name", user.Name)
+	c.Set("id", user.ID)
 	c.Next()
+    }
 }

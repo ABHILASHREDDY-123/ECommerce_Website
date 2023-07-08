@@ -25,6 +25,7 @@ func AddReview(c *gin.Context){
 			}) 
 		} else {
 			review_obj.ProductID = uint(id)
+			review_obj.UserID = c.GetUint("id")
 			result := database.DB.Create(&review_obj)
 			if result.Error != nil {
 				c.JSON(400,gin.H{
