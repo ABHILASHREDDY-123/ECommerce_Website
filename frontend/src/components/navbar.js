@@ -14,7 +14,10 @@ const Navbar = () => {
             <a href="/login">Login</a>
           </li>
           <li>
-            <a href="logout">Logout</a>
+            <a href="/logout">Logout</a>
+          </li>
+          <li>
+            <a href ="/display">Display</a>
           </li>
         </div>
       </ul>
