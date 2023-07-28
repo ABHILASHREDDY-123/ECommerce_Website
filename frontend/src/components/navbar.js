@@ -1,4 +1,4 @@
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <nav class="navbar">
       <div class="logo">MUO</div>
