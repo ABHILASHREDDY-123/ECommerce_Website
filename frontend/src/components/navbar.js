@@ -1,3 +1,4 @@
+import Search from "./search";
 const Navbar = () => {
   return (
     <nav class="navbar">
@@ -18,6 +19,10 @@ const Navbar = () => {
           </li>
           <li>
             <a href ="/display">Display</a>
+          </li>
+          <li>
+            <Search/>  
+            {/* same as calling a function */}
           </li>
         </div>
       </ul>
