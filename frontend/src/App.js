@@ -6,20 +6,6 @@ import About from "./components/about";
 import DisplayMovie from "./components/DisplayMovie";
 import { useState } from "react";
 
-const dummy_data=[
-  {
-    "name" : "Abhi",
-    "gender" : "male",
-    "age" : "21",
-    "url" : "https://shorturl.at/dfvRY"
-  },
-  {
-    "name" :"tulasi",
-    "gender":"female",
-    "age":"20",
-    "url" :"https://shorturl.at/bcGMQ"
-
-  }]
 function App() {
   const [movies,setMovies] = useState([]);
   
