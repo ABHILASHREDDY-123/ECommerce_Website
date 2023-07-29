@@ -1,5 +1,5 @@
 import Search from "./search";
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <nav class="navbar">
       <div class="logo">MUO</div>
@@ -21,7 +21,8 @@ const Navbar = () => {
             <a href ="/display">Display</a>
           </li>
           <li>
-            <Search/>  
+            <Search setMovies={props.setMovies}/> 
+
             {/* same as calling a function */}
           </li>
         </div>
