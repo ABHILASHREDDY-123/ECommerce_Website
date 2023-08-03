@@ -1,0 +1,59 @@
+.showFilter {
+    height: 100%;
+    width: 20%;
+    background-color: aqua;
+    border-radius: 5%;
+}
+.genderfilter {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5%;
+    background-color: rgb(196, 196, 191);
+    margin-top: 5%;
+    padding-left:5% ;
+    padding-right: 5%;
+    padding-top: 5%;
+    margin-bottom: 5%;
+}
+.costfilter {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5%;
+    background-color: rgb(196, 196, 191);
+    padding-left:5% ;
+    padding-right: 5%;
+    padding-top: 5%;
+    margin-bottom: 5%;
+}
+.checkboxa {
+   display: flex;
+   flex-direction: column-reverse;
+   align-items: center;
+
+}
+.checkboxspan {
+    padding: auto;
+    font-size: medium;
+}
+.inputcheck {
+    height: 50%;
+    width: 50%;
+}
+select {
+    height: 50%;
+    width: 100%;
+    font-size: medium;
+}
+.discountfilter {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5%;
+    background-color: rgb(196, 196, 191);
+    padding-left:5% ;
+    padding-right: 5%;
+    padding-top: 5%;
+    margin-bottom: 5%;
+}

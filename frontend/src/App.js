@@ -1,38 +1,22 @@
 import "./App.css";
-import Navbar from "./components/navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./components/home";
+import Navbar from "./components/navbar"
+import Products from "./components/products";
 import About from "./components/about";
-import DisplayMovie from "./components/DisplayMovie";
-import { useState } from "react";
-
-const dummy_data=[
-  {
-    "name" : "Abhi",
-    "gender" : "male",
-    "age" : "21",
-    "url" : "https://shorturl.at/dfvRY"
-  },
-  {
-    "name" :"tulasi",
-    "gender":"female",
-    "age":"20",
-    "url" :"https://shorturl.at/bcGMQ"
-
-
-  }]
-function App() {
-    const [movies,setMovies] = useState([]); 
-
+import Cart from "./components/cart";
+import { connect } from "react-redux";
+function App() { 
+  
   return (
     <div className="App">
-      <Navbar setMovies={setMovies}/>
-      {/* <Navbar/>   ===> same as above(other syntax) */}
+    <Navbar/>
       <Router>
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/display" element={<DisplayMovie movies={dummy_data}/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About/>}/>
+          <Route path="/search" element={<Products/>}/>
+          <Route path="/cart" element={<Cart/>}/>
         </Routes>
       </Router>
     </div>
@@ -40,4 +24,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) =>{
+  return {
+    ...state
+  }
+}
+
+export default connect(mapStateToProps)(App);
